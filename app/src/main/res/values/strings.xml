@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">mediaPlayer</string>
+    <string name="app_name">mediaPlayer demo</string>
+    <string name="media_completed">End of media sample.</string>
 </resources>
