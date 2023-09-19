@@ -1,6 +1,8 @@
 package com.example.bill.mediaplayer;
 
-//"Adventure Meme" Kevin MacLeod (incompetech.com)
+//@author: Bill Lugo
+
+// Sound sample: "Adventure Meme" Kevin MacLeod (incompetech.com)
 //        Licensed under Creative Commons: By Attribution 4.0 License
 //        http://creativecommons.org/licenses/by/4.0/
 
