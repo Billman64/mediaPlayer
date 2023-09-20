@@ -23,23 +23,28 @@
             android:layout_marginBottom="0dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Play" />
+                android:layout_width="128dp"
+                android:layout_height="@dimen/button_height"
+                android:background="@color/button"
+                android:src="@android:drawable/ic_media_play"
+                android:tint="#222"
+                android:padding="8dp"
+                android:gravity="center"
+                android:shadowColor="#ddd"
+                android:shadowDx="16"
+                android:shadowDy="8" />
 
-            <Button
-                android:id="@+id/pause"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pause" />
-
-            <Button
+            <ImageButton
                 android:id="@+id/ff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FF" />
+                android:layout_width="48dp"
+                android:layout_height="@dimen/button_height"
+                android:background="@color/button"
+                android:src="@drawable/baseline_fast_forward_24"
+                android:layout_marginStart="@dimen/button_spacer"
+                android:layout_marginLeft="@dimen/button_spacer"
+                 />
 
         </LinearLayout>
 

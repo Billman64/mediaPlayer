@@ -2,4 +2,6 @@
 <resources>
 
     <dimen name="margin">32dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="button_spacer">16dp</dimen>
 </resources>

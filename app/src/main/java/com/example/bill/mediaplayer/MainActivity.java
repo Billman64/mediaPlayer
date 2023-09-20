@@ -8,11 +8,13 @@ package com.example.bill.mediaplayer;
 
 
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,9 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button play = findViewById(R.id.play);
-        Button pause = findViewById(R.id.pause);
-        Button ff = findViewById(R.id.ff);
+        ImageButton play = findViewById(R.id.play);
+        ImageButton ff = findViewById(R.id.ff);
         final TextView tv = findViewById(R.id.out);
 
 
@@ -41,43 +42,39 @@ public class MainActivity extends AppCompatActivity {
 //                mediaPlayer.reset();
                 tv.setText(R.string.media_completed);
 //                Toast.makeText(MainActivity.this, "End of song!", Toast.LENGTH_SHORT).show();
-                Button ff = findViewById(R.id.ff);
+                ImageButton ff = findViewById(R.id.ff);
                 ff.setEnabled(false);
-                Button pause = findViewById(R.id.pause);
-                pause.setEnabled(false);
             }
         });
 
 
-        // implement play button functionality
+        // implement Play button functionality
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.start();
-                Log.d(TAG, "Media started. Duration" + mediaPlayer.getDuration());
-//                String title = mediaPlayer.
-                tv.setText("playing");
 
-                // ensure buttons enabled (for replays)
-                pause.setEnabled(true);
-                ff.setEnabled(true);
-            }
-        });
+                if(!mediaPlayer.isPlaying()){
+                    mediaPlayer.start();
+                    Log.d(TAG, "Play button clicked. Position: " + mediaPlayer.getCurrentPosition());
+                    tv.setText("playing");
 
-        // implement pause button functionality
-        pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "Pause button clicked");
-                if(mediaPlayer != null) {
-                    Log.d(TAG, "position: " + mediaPlayer.getCurrentPosition() + " duration: " + mediaPlayer.getDuration());
-                    mediaPlayer.pause();
-                    position = mediaPlayer.getCurrentPosition();
+                    // ensure buttons enabled (for replays)
+                    ff.setEnabled(true);
 
-                    tv.setText("paused at " + Integer.toString(position));
+                    play.setImageDrawable(getResources().getDrawable(R.drawable.baseline_pause_24));
                 }
+                else {
+                    Log.d(TAG, "Pause button clicked");
+                    if(mediaPlayer != null) {
+                        Log.d(TAG, "position: " + mediaPlayer.getCurrentPosition() + " duration: " + mediaPlayer.getDuration());
+                        mediaPlayer.pause();
+                        position = mediaPlayer.getCurrentPosition();
 
+                        tv.setText("paused at " + Integer.toString(position));
+                    }
 
+                    play.setImageDrawable(getResources().getDrawable(R.drawable.baseline_play_arrow_24));
+                }
             }
         });
 
